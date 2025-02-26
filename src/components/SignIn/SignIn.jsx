@@ -1,52 +1,52 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Correctly import useNavigate
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
+
+import { signIn } from "../../services/authServices";
+
+import { UserContext } from "../../contexts/userContext";
 
 const SignIn = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+	const navigate = useNavigate();
+	const { setUser } = useContext(UserContext);
+	const [message, setMessage] = useState("");
+	const [formData, setFormData] = useState({
+		username: "",
+		password: "",
+	});
+	const { username, password } = formData;
+	const handleChange = (evt) => {
+		setMessage("");
+		setFormData({ ...formData, [evt.target.name]: evt.target.value });
+	};
 
-  const navigate = useNavigate();  // Use useNavigate hook
+	const handleSubmit = async (evt) => {
+		evt.preventDefault();
+		try {
+			const signedInUser = await signIn(formData);
+			setUser(signedInUser);
+			navigate("/store-one"); // Navigate to shop page
+		} catch (err) {
+			setMessage(err.message);
+		}
+	};
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+	return (
+		<div>
+			<h2>Sign In</h2>
 
-    // Check if username and password are entered
-    if (username && password) {
-      setMessage('Signed in successfully');
-      // Navigate to StoreOne page after successful sign-in
-      navigate('/store-one');
-    } else {
-      setMessage('Signin failed');
-    }
-  };
-
-  return (
-    <div>
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(evt) => setUsername(evt.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(evt) => setPassword(evt.target.value)}
-          required
-        />
-        <button type="submit">Sign In</button>
-      </form>
-      <p>{message}</p>
-      <p>
-        Don't have an account? <a href="/signup">Sign Up</a>
-      </p>
-    </div>
-  );
+      <p>user: user1</p>
+      <p>password: 123</p>
+			<form onSubmit={handleSubmit}>
+				<input type="text" placeholder="Username" name="username" value={username} onChange={handleChange} required />
+				<input type="password" placeholder="Password" name="password" value={password} onChange={handleChange} required />
+				<button type="submit">Sign In</button>
+			</form>
+			<p>{message}</p>
+			<p>
+				Don't have an account? <a href="/signup">Sign Up</a>
+			</p>
+		</div>
+	);
 };
 
 export default SignIn;
