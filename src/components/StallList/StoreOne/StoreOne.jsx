@@ -1,42 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { satayShop } from "../../../services/shopServices";
 
 const StoreOne = ({ addToCart }) => {
-  const items = [
-    { id: 1, name: 'Chicken Wings', price: '10 For $5' },
-    { id: 2, name: 'Chicken Satay', price: '10 For $10' },
-    { id: 3, name: 'Mutton Satay', price: '10 For $7' },
-  ];
+	const [shopData, setShopData] = useState({});
+	const [error, setError] = useState(null);
 
-  return (
-    <div>
-      <h2>BBQ Store 1</h2>
-      <h3>Menu:</h3>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            <strong>{item.name}</strong> - {item.price}
-            <button onClick={() => addToCart(item)}>Add to Cart</button>
-          </li>
-        ))}
-      </ul>
+	const fetchShopData = async () => {
+		try {
+			const satayShopData = await satayShop();
+			setShopData(satayShopData);
+		} catch (error) {
+			setError("Error fetching shop data");
+			console.error("Error fetching shop data:", error);
+		}
+	};
 
-      {/* <h3>Cart:</h3>
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <ul>
-          {cart.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.price}
-              <button onClick={() => removeFromCart(item)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
+	useEffect(() => {
+		fetchShopData();
+	}, []);
 
-      <button>Checkout</button> */}
-    </div>
-  );
+	if (error) {
+		return <div>{error}</div>;
+	}
+
+	if (!shopData || !shopData.menu) {
+		return <div>Loading...</div>;
+	}
+
+	const { shopName, menu, address } = shopData;
+
+	return (
+		<div>
+			<h2>{shopName}</h2>
+      <p>{address}</p>
+			<h3>Menu:</h3>
+
+			{menu.map((item) => (
+				<div key={item._id}>
+					<img src={item.image} alt={item.itemName} width={100} />
+					<p>
+						<strong>{item.itemName}</strong> - {item.price}
+					</p>
+					<p>{item.description}</p>
+					<button onClick={() => addToCart(item)}>Add to Cart</button>
+				</div>
+			))}
+		</div>
+	);
 };
 
 export default StoreOne;

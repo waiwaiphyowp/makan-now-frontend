@@ -1,8 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-
 import { signIn } from "../../services/authServices";
-
 import { UserContext } from "../../contexts/userContext";
 
 const SignIn = () => {
@@ -13,6 +11,7 @@ const SignIn = () => {
 		username: "",
 		password: "",
 	});
+
 	const { username, password } = formData;
 	const handleChange = (evt) => {
 		setMessage("");

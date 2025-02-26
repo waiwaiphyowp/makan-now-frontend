@@ -11,7 +11,8 @@ const getUserFromToken = () => {
 
 function UserProvider({ children }) {
     const [user, setUser] = useState(getUserFromToken());
-	const value = { user, setUser };
+	const isLoggedIn = user && user.username;
+	const value = { user, setUser, isLoggedIn };
 
 	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
