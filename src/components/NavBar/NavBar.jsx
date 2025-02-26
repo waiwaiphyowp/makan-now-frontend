@@ -24,16 +24,19 @@ const NavBar = () => {
 							Sign Out
 						</Link>
 					</li>
+					<li>
+						{/* add cart */}
+						<Link to="/cart">
+							Cart
+						</Link>
+					</li>
+					
 				</ul>
 			) : (
 				<ul>
 					{/* Another new link */}
 					<li>
 						<Link to="/">Home</Link>
-					</li>
-
-					<li>
-						<Link to="/signup">Sign Up</Link>
 					</li>
 				</ul>
 			)}
