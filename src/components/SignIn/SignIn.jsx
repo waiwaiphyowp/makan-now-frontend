@@ -29,23 +29,45 @@ const SignIn = () => {
 		}
 	};
 
-	return (
-		<div>
-			<h2>Sign In</h2>
+  return (
+    <div className="in-out-container">
+  <h2 className="in-out-title">Sign In</h2>
 
-      <p>user: user1</p>
-      <p>password: 123</p>
-			<form onSubmit={handleSubmit}>
-				<input type="text" placeholder="Username" name="username" value={username} onChange={handleChange} required />
-				<input type="password" placeholder="Password" name="password" value={password} onChange={handleChange} required />
-				<button type="submit">Sign In</button>
-			</form>
-			<p>{message}</p>
-			<p>
-				Don't have an account? <a href="/signup">Sign Up</a>
-			</p>
-		</div>
-	);
+  <div className="in-out-demo">
+    <p><strong>User:</strong> user1</p>
+    <p><strong>Password:</strong> 123</p>
+  </div>
+
+  <form className="in-out-form" onSubmit={handleSubmit}>
+    <input
+      type="text"
+      className="in-out-input"
+      placeholder="Username"
+      name="username"
+      value={username}
+      onChange={handleChange}
+      required
+    />
+    <input
+      type="password"
+      className="in-out-input"
+      placeholder="Password"
+      name="password"
+      value={password}
+      onChange={handleChange}
+      required
+    />
+    <button type="submit" className="in-out-button">Sign In</button>
+  </form>
+
+  <p>{message}</p>
+
+  <p className="in-out-link">
+    Don't have an account? <a href="/signup">Sign Up</a>
+  </p>
+</div>
+
+  );
 };
 
 export default SignIn;

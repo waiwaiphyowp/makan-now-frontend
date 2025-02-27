@@ -1,0 +1,123 @@
+/* Styling for login and logout page  */
+/* Container */
+.in-out-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #872341;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #BE3144;
+}
+
+.title-logo {
+  color: #872341;
+}
+
+/* Title Sign In */
+.in-out-title {
+  color: #ffffff; 
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* user name and password */
+.in-out-demo {
+  background: #791f3ad5;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #ffffff;
+  border: none;
+}
+
+/* Form Styles */
+.in-out-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Button */
+.in-out-input,
+.in-out-button,
+.in-out-cancel-button {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 25px;
+  font-size: 18px;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  background-color: rgba(121, 31, 58, 0.83);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  /* cursor: pointer; */
+}
+
+/* Submit Button */
+.in-out-button {
+  background-color: #DD5353;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.in-out-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(102, 187, 106, 0.3);
+}
+
+/* Cancel Button */
+.in-out-cancel-button {
+  background-color: #872341;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.in-out-cancel-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(224, 48, 48, 0.3);
+}
+
+/* Link for sign in and sign up */
+.in-out-link {
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.in-out-link a {
+  color: #EF9F9F;
+  text-decoration: none;
+}
+
+.in-out-link a:hover {
+  color: #F47C7C;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+/* @media (max-width: 480px) {
+  .in-out-container {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .in-out-title {
+    font-size: 24px;
+  }
+
+  .in-out-input, 
+  .in-out-button, 
+  .in-out-cancel-button {
+    font-size: 14px;
+  }
+} */

@@ -37,21 +37,56 @@ const SignUp = () => {
 	};
 
 	return (
-		<div>
-			<h2>Sign Up</h2>
-			<form onSubmit={handleSubmit}>
-				<input type="text" placeholder="Username" name="username" value={username} onChange={handleChange} required />
-				<input type="password" placeholder="Password" name="password" value={password} onChange={handleChange} required />
-				<input type="password" name="passwordConf" placeholder="passwordConf" value={passwordConf} onChange={handleChange} required />
-				<div>
-					<button disabled={isFormInvalid()}>Sign Up</button>
-					<button onClick={() => navigate("/")}>Cancel</button>
+		<div className="in-out-container">
+			<h2 className="in-out-title">Sign Up</h2>
+
+			<form className="in-out-form" onSubmit={handleSubmit}>
+				<input
+					type="text"
+					className="in-out-input"
+					placeholder="Username"
+					name="username"
+					value={username}
+					onChange={handleChange}
+					required
+				/>
+				<input
+					type="password"
+					className="in-out-input"
+					placeholder="Password"
+					name="password"
+					value={password}
+					onChange={handleChange}
+					required
+				/>
+				<input
+					type="password"
+					className="in-out-input"
+					name="passwordConf"
+					placeholder="Confirm Password"
+					value={passwordConf}
+					onChange={handleChange}
+					required
+				/>
+
+				<div className="in-out-buttons">
+					<button
+						type="submit"
+						className="in-out-button"
+						disabled={isFormInvalid()}
+					>
+						Sign Up
+					</button>
+					<button type="button" className="in-out-cancel-button" onClick={() => navigate("/")}>
+						Cancel
+					</button>
 				</div>
 			</form>
-			<p>{message}</p>
-			<p>
-				Already have an account? <Link to="/signin">Sign In</Link>
-			</p>
+
+				<p className="in-out-message">{message}</p>
+				<p className="in-out-link">
+					Already have an account? <Link to="/signin">Sign In</Link>
+				</p>
 		</div>
 	);
 };
