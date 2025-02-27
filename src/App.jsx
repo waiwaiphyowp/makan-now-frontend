@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import StoreOne from "./components/StallList/StoreOne/StoreOne";
@@ -8,33 +8,44 @@ import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
-  const { user } = useContext(UserContext);
-  const [cart, setCart] = useState([]);
+	const { isLoggedIn } = useContext(UserContext);
+	const [cart, setCart] = useState([]);
 
-  // Add item to cart
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-  };
+	// Add item to cart
+	const addToCart = (item) => {
+		setCart([...cart, item]);
+	};
 
-  // Remove item from cart
-  const removeFromCart = (index) => {
-    const newCart = cart.filter((item, i) => i !== index);
-    setCart(newCart);
-  };
+	// Remove item from cart
+	const removeFromCart = (index) => {
+		const newCart = cart.filter((item, i) => i !== index);
+		setCart(newCart);
+	};
 
-  return (
-    <div>
-      <NavBar />
-      <h1>Makan Now</h1>
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/store-one" element={<StoreOne addToCart={addToCart} />} /> {/* Ensure the route matches the navigate path */}
-        <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
-      </Routes>
-    </div>
-  );
+	return (
+		<div>
+			<NavBar />
+			<h1>Makan Now</h1>
+			<Routes>
+				{isLoggedIn ? (
+					<>
+						<Route path="/" element={<StoreOne addToCart={addToCart} />} />
+						<Route path="/store-one" element={<StoreOne addToCart={addToCart} />} />
+						<Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
+						<Route path="/signin" element={<Navigate to="/" />} />
+						<Route path="/signup" element={<Navigate to="/" />} />
+					</>
+				) : (
+					<>
+						<Route path="/" element={<SignIn />} />
+						<Route path="/signin" element={<SignIn />} />
+						<Route path="/signup" element={<SignUp />} />
+					</>
+				)}
+				<Route path="*" element={<Navigate to="/" />} />
+			</Routes>
+		</div>
+	);
 };
 
 export default App;
