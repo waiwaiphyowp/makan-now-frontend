@@ -1,5 +1,5 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/shops`;
-const satayShopID = "67bea84407155c3b9fd3c65b";
+const satayShopID = "67c00d8f3f17f104ab8af31c";
 
 const satayShop = async () => {
 	try {
