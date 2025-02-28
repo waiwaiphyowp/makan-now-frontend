@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { satayShop } from "../../../services/shopServices";
+import "./StoreOne.css";
 
 const StoreOne = ({ addToCart }) => {
 	const [shopData, setShopData] = useState({});
@@ -30,21 +31,28 @@ const StoreOne = ({ addToCart }) => {
 	const { shopName, menu, address } = shopData;
 
 	return (
-		<div>
-			<h2>{shopName}</h2>
-      <p>{address}</p>
+		<div className="page-wrapper">
+			<h2 className="store-title">{shopName}</h2>
+			<p className="store-details">{address}</p>
 			<h3>Menu:</h3>
 
-			{menu.map((item) => (
-				<div key={item._id}>
-					<img src={item.image} alt={item.itemName} width={100} />
-					<p>
-						<strong>{item.itemName}</strong> - {item.price}
-					</p>
-					<p>{item.description}</p>
-					<button onClick={() => addToCart(item)}>Add to Cart</button>
-				</div>
-			))}
+			<div className="menu-wrapper">
+				{menu.map((item) => (
+					<div key={item._id} className="menu-card">
+						<div>
+							<p className="item-name">
+								<strong>{item.itemName}</strong>
+							</p>
+							<p className="item-description">{item.description}</p>
+							<p className="item-price">$ {item.price}</p>
+							<button className="item-button" onClick={() => addToCart(item)}>
+								Add to Cart
+							</button>
+						</div>
+						<img className="item-img" src={item.image} alt={item.itemName} />
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

@@ -42,21 +42,21 @@ const NavBar = () => {
       {/* NavBar show after log In */}
       {user && (
         <nav className="bottom-nav">
-          <ul className="bottom-nav-list">
+          <div className="bottom-nav-list">
             {/* Another new link */}
             {/* to the shop */}
-            <li className="bottom-nav-item">
+            <div className="bottom-nav-item">
               <Link to="/store" className="bottom-nav-link">
                 <FontAwesomeIcon icon={faShop} />
               </Link>
-            </li>
+            </div>
             {/* add to cart */}
-            <li className="bottom-nav-item">
+            <div className="bottom-nav-item">
               <Link to="/cart" className="bottom-nav-link">
                 <FontAwesomeIcon icon={faCartShopping} />
               </Link>
-            </li>
-          </ul>
+            </div>
+          </div>
         </nav>
       )}
     </>
