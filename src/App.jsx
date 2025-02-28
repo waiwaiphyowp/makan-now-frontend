@@ -6,6 +6,7 @@ import StoreOne from "./components/StallList/StoreOne/StoreOne";
 import { UserContext } from "../src/contexts/userContext";
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
+import "../src/App.css"
 
 const App = () => {
 	const { isLoggedIn } = useContext(UserContext);
@@ -25,7 +26,7 @@ const App = () => {
 	return (
 		<div>
 			<NavBar />
-			<h1>Makan Now</h1>
+			<h1>MakanNow</h1>
 			<Routes>
 				{isLoggedIn ? (
 					<>
