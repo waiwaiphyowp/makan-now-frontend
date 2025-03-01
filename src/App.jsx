@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import StoreOne from "./components/StallList/StoreOne/StoreOne";
+import Checkout from "./components/Checkout/Checkout";
 import { UserContext } from "../src/contexts/userContext";
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
-import "../src/App.css"
+import "../src/App.css";
 
 const App = () => {
 	const { isLoggedIn } = useContext(UserContext);
@@ -24,9 +25,8 @@ const App = () => {
 	};
 
 	return (
-		<div>
-			<NavBar />
-			<h1>MakanNow</h1>
+		<main>
+			{isLoggedIn && <NavBar />}
 			<Routes>
 				{isLoggedIn ? (
 					<>
@@ -35,6 +35,7 @@ const App = () => {
 						<Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
 						<Route path="/signin" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
+						<Route path="/checkout" element={<Checkout />} />
 					</>
 				) : (
 					<>
@@ -45,7 +46,7 @@ const App = () => {
 				)}
 				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
-		</div>
+		</main>
 	);
 };
 

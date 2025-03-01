@@ -1,0 +1,54 @@
+.page-wrapper {
+	padding: 60px 20px;
+	margin-bottom: 60px;
+}
+
+.store-title {
+	margin-bottom: 6px;
+}
+
+.store-details {
+	margin-top: 0px;
+	margin-bottom: 30px;
+}
+
+.menu-card {
+	padding: 14px;
+	background-color: white;
+	border-radius: 14px;
+	display: flex;
+	gap: 16px;
+	justify-content: space-between;
+}
+
+.menu-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.item-name {
+	margin: 0;
+	font-size: 14px;
+}
+
+.item-description {
+	margin: 0;
+	font-size: 12px;
+}
+
+.item-price {
+	font-size: 14px;
+	font-weight: BOLD;
+}
+
+.item-img {
+	width: 100px;
+	height: 100px;
+	border-radius: 8px;
+}
+
+.item-button {
+	font-size: 14px;
+	padding: 4px 10px;
+}
