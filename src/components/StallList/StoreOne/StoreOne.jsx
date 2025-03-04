@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { satayShop } from "../../../services/shopServices";
+import MenuItem from "../../MenuItem/MenuItem";
 import "./StoreOne.css";
 
-const StoreOne = ({ addToCart }) => {
+const StoreOne = ({ addToCart, cart, handleAddQuantity, handleRemoveQuantity }) => {
 	const [shopData, setShopData] = useState({});
 	const [error, setError] = useState(null);
+
+	console.log(cart)
 
 	const fetchShopData = async () => {
 		try {
@@ -38,19 +41,7 @@ const StoreOne = ({ addToCart }) => {
 
 			<div className="menu-wrapper">
 				{menu.map((item) => (
-					<div key={item._id} className="menu-card">
-						<div>
-							<p className="item-name">
-								<strong>{item.itemName}</strong>
-							</p>
-							<p className="item-description">{item.description}</p>
-							<p className="item-price">$ {item.price}</p>
-							<button className="item-button" onClick={() => addToCart(item)}>
-								Add to Cart
-							</button>
-						</div>
-						<img className="item-img" src={item.image} alt={item.itemName} />
-					</div>
+					<MenuItem key={item._id} menuItem={item} cart={cart} addToCart={addToCart} handleAddQuantity={handleAddQuantity}  handleRemoveQuantity={handleRemoveQuantity}/>
 				))}
 			</div>
 		</div>

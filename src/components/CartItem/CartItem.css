@@ -1,27 +1,4 @@
-.page-wrapper {
-	padding: 60px 20px;
-	margin-bottom: 60px;
-}
-
-.store-title {
-	margin-bottom: 6px;
-}
-
-.store-details {
-	margin-top: 0px;
-	margin-bottom: 30px;
-}
-
-
-
-
-.menu-wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.menu-card {
+.item-card {
 	padding: 14px;
 	background-color: white;
 	border-radius: 14px;
@@ -29,7 +6,6 @@
 	gap: 16px;
 	justify-content: space-between;
 }
-
 .item-name {
 	margin: 0;
 	font-size: 14px;
