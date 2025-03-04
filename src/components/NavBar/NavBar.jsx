@@ -51,6 +51,12 @@ const NavBar = () => {
               </Link>
             </div>
             {/* add to cart */}
+            <div>
+            <Link to="/checkout" className="bottom-nav-link">
+                Queue No
+              </Link>
+            </div>
+
             <div className="bottom-nav-item">
               <Link to="/cart" className="bottom-nav-link">
                 <FontAwesomeIcon icon={faCartShopping} />
