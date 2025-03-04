@@ -33,17 +33,18 @@ const App = () => {
 						<Route path="/" element={<StoreOne addToCart={addToCart} />} />
 						<Route path="/store-one" element={<StoreOne addToCart={addToCart} />} />
 						<Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
+						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/signin" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
-						<Route path="/checkout" element={<Checkout />} />
 					</>
 				) : (
 					<>
+						<Route path="/signin" element={isLoggedIn ? <Navigate to="/" /> : <SignIn />} />
+						<Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
 						<Route path="/" element={<SignIn />} />
-						<Route path="/signin" element={<SignIn />} />
-						<Route path="/signup" element={<SignUp />} />
 					</>
 				)}
+				{/* Catch-all route to redirect to the home page */}
 				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
 		</main>
