@@ -30,7 +30,7 @@ export default function MenuItem({ menuItem, addToCart, cart, handleAddQuantity,
 				<p className="item-price">$ {menuItem.price}</p>
 				{isItemInCart ? (
 					<div className="">
-						<div className="">
+						<div className="quantity">
 							<button type="button" onClick={() => handleRemoveQuantity(menuItem._id)}>
 								-
 							</button>

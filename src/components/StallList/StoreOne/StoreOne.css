@@ -52,6 +52,17 @@
 }
 
 .item-button {
-	font-size: 14px;
-	padding: 4px 10px;
+  font-size: 14px;
+  padding: 4px 10px;
+  background-color: #DD5353; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
+.item-button:hover {
+  background-color: #C04040; 
+}
+
+
