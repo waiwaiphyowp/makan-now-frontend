@@ -12,7 +12,7 @@ export default function CartItem({ cartItem, handleRemoveItem, handleAddQuantity
 				<p className="item-price">Quantity: {cartItem.quantity}</p>
 				<p className="item-price">$ {cartItem.price * cartItem.quantity}</p>
 
-				<div className="">
+				<div className="quantity">
 					<div className="">
 						<button type="button" onClick={() => handleRemoveQuantity(cartItem._id)}>
 							-
