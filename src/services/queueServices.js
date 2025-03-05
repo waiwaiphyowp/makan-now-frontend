@@ -2,21 +2,32 @@ import { useState, useEffect, useRef } from "react";
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/queue-num`;
 
-const queueNumServices = () => {
-  const [queueNum, setQueueNum] = useState(null);
-  const fetched = useRef(false);
+const queueNumServices = async () => {
 
-  useEffect(() => {
-    if (fetched.current) return; 
-    fetched.current = true;
+  try {
+		const res = await fetch(`${BASE_URL}`, {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		});
 
-    fetch(BASE_URL)
-      .then((response) => response.json())
-      .then((data) => setQueueNum(data.queueNum))
-      .catch((error) => console.error("Error fetching queue number:", error));
-  }, []);
+		if (!res.ok) {
+			throw new Error(`Error: ${res.statusText}`);
+		}
 
-  return queueNum;
+		const data = await res.json();
+
+		if (data.error) {
+			throw new Error(data.error);
+		}
+
+		return data;
+	} catch (error) {
+		console.log("Error in satayShop function:", error);
+		throw new Error(error);
+	}
+
+
+
 };
 
 export { queueNumServices };

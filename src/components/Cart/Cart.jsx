@@ -6,29 +6,26 @@ import { queueNumServices } from "../../services/queueServices";
 import { checkoutServices } from "../../services/checkoutServices";
 import "./Cart.css";
 
-const Cart = ({ cart, handleRemoveItem, handleAddQuantity, handleRemoveQuantity, totalPrice }) => {
+const Cart = ({ cart, setCart, handleRemoveItem, handleAddQuantity, handleRemoveQuantity, totalPrice }) => {
 	const navigate = useNavigate();
 	const { user } = useContext(UserContext);
 	const userID = user._id;
-	console.log("test " + user._id);
 
 	const [updatedCart, setUpdatedCart] = useState([]);
 
 	const handleCheckout = async () => {
 		try {
-			// const queueNum = await queueNumServices();
-			//console.log(queueNum);
 			const checkoutData = {
 				orders: updatedCart,
 				totalPrice: totalPrice,
-				queueNumber: 1,
 				status: "Preparing",
 			};
 			console.log(checkoutData);
 			const response = await checkoutServices(userID, checkoutData);
 
 			console.log(response);
-			navigate("/checkout");
+			setCart([]);
+			navigate("/orders");
 		} catch (err) {
 			// Handle errors (e.g., display message to the user)
 			console.error("Checkout error:", err.message);
@@ -42,11 +39,13 @@ const Cart = ({ cart, handleRemoveItem, handleAddQuantity, handleRemoveQuantity,
 
 	return (
 		<div className="page-wrapper">
-			<h3>Cart:</h3>
+		
 			{cart.length === 0 ? (
-				<p>Your cart is empty.</p>
+				<h3>Your cart is empty.</h3>
 			) : (
+				
 				<div className="menu-wrapper">
+					<h3>Cart:</h3>
 					{updatedCart.map((item, index) => (
 						<CartItem
 							key={item._id}
@@ -56,12 +55,12 @@ const Cart = ({ cart, handleRemoveItem, handleAddQuantity, handleRemoveQuantity,
 							handleRemoveItem={handleRemoveItem}
 						/>
 					))}
+					<p>
+						Total: <b>$ {totalPrice}</b>
+					</p>
 				</div>
 			)}
 
-			<p>
-				Total: <b>$ {totalPrice}</b>
-			</p>
 			{cart.length > 0 ? (
 				<button className="checkout-button" onClick={handleCheckout}>
 					Checkout
