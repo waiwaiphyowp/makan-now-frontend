@@ -1,0 +1,30 @@
+.signup-button,
+.cancel-button {
+margin: 15px;
+border-radius: 25px;
+font-size: 18px;
+box-sizing: border-box;
+border: 1px solid #ffffff;
+color: #ffffff;
+font-family: 'Poppins', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+font-weight: bold;
+}
+
+.cancel-button:hover,
+.signup-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(102, 187, 106, 0.3);
+}
+
+.signup-button {
+  background-color: #DD5353;
+}
+
+/* cancel button  */
+.cancel-button {
+  background-color: #872341;
+
+}
+

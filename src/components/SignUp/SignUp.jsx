@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../services/authServices";
 import { UserContext } from "../../contexts/userContext";
+import "./SignUp.css"
 
 const SignUp = () => {
 	const navigate = useNavigate();
@@ -72,12 +73,12 @@ const SignUp = () => {
 				<div className="in-out-buttons">
 					<button
 						type="submit"
-						className="in-out-button"
+						className="signup-button"
 						disabled={isFormInvalid()}
 					>
 						Sign Up
 					</button>
-					<button type="button" className="in-out-cancel-button" onClick={() => navigate("/")}>
+					<button type="button" className="cancel-button" onClick={() => navigate("/")}>
 						Cancel
 					</button>
 				</div>
