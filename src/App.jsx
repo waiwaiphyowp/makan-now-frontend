@@ -11,18 +11,62 @@ import "../src/App.css";
 
 const App = () => {
 	const { isLoggedIn } = useContext(UserContext);
+
 	const [cart, setCart] = useState([]);
 
 	// Add item to cart
-	const addToCart = (item) => {
-		setCart([...cart, item]);
+	const handleAddToCart = (orderItem) => {
+		const checkItem = cart.find((item) => item._id === orderItem._id);
+
+		if (!checkItem) {
+			const newItem = { ...orderItem, quantity: 1 }; // use orderItem here
+			setCart([...cart, newItem]);
+		} else {
+			const updatedCartItems = cart.map((item) => {
+				if (item._id === orderItem._id) {
+					// Use _id to match
+					return { ...item, quantity: item.quantity + 1 };
+				}
+				return item;
+			});
+			setCart(updatedCartItems);
+		}
+	};
+
+	const handleAddQuantity = (orderItemId) => {
+		const itemIndex = cart.findIndex((item) => item._id === orderItemId);
+		const updatedCartItems = [...cart];
+		const currentQty = updatedCartItems[itemIndex]?.quantity || 0;
+		updatedCartItems[itemIndex].quantity = currentQty + 1;
+		setCart(updatedCartItems);
+	};
+
+	const handleRemoveQuantity = (orderItemId) => {
+		const itemIndex = cart.findIndex((item) => item._id === orderItemId);
+		const newCartArray = [...cart];
+		const currentQty = newCartArray[itemIndex]?.quantity || 0;
+		const newQty = currentQty - 1;
+
+		if (currentQty > 0) {
+			if (newQty > 0) {
+				newCartArray[itemIndex].quantity = newQty;
+				setCart([...newCartArray]);
+			} else {
+				const updatedCart = newCartArray.filter((item) => item !== cart[itemIndex]);
+				setCart(updatedCart);
+			}
+		}
 	};
 
 	// Remove item from cart
-	const removeFromCart = (index) => {
-		const newCart = cart.filter((item, i) => i !== index);
-		setCart(newCart);
+
+	const handleRemoveItem = (orderItemId) => {
+		const itemIndex = cart.findIndex((item) => item._id === orderItemId);
+		const updatedCart = cart.filter((item) => item !== cart[itemIndex]);
+		setCart(updatedCart);
 	};
+
+	const totalPrice = cart.reduce((acc, obj) => acc + obj.price * obj.quantity, 0);
 
 	return (
 		<main>
@@ -30,9 +74,25 @@ const App = () => {
 			<Routes>
 				{isLoggedIn ? (
 					<>
-						<Route path="/" element={<StoreOne addToCart={addToCart} />} />
-						<Route path="/store-one" element={<StoreOne addToCart={addToCart} />} />
-						<Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
+						<Route
+							path="/"
+							element={
+								<StoreOne cart={cart} addToCart={handleAddToCart} handleAddQuantity={handleAddQuantity} handleRemoveQuantity={handleRemoveQuantity} />
+							}
+						/>
+						{/* <Route path="/store-one" element={<StoreOne cart={cart} addToCart={handleAddToCart} />} /> */}
+						<Route
+							path="/cart"
+							element={
+								<Cart
+									cart={cart}
+									handleRemoveItem={handleRemoveItem}
+									handleAddQuantity={handleAddQuantity}
+									handleRemoveQuantity={handleRemoveQuantity}
+									totalPrice={totalPrice}
+								/>
+							}
+						/>
 						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/signin" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
