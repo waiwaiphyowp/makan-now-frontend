@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import StoreOne from "./components/StallList/StoreOne/StoreOne";
-import Checkout from "./components/Checkout/Checkout";
+import Orders from "./components/Orders/Orders";
 import { UserContext } from "../src/contexts/userContext";
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
@@ -86,6 +86,7 @@ const App = () => {
 							element={
 								<Cart
 									cart={cart}
+									setCart={setCart}
 									handleRemoveItem={handleRemoveItem}
 									handleAddQuantity={handleAddQuantity}
 									handleRemoveQuantity={handleRemoveQuantity}
@@ -93,7 +94,7 @@ const App = () => {
 								/>
 							}
 						/>
-						<Route path="/checkout" element={<Checkout />} />
+						<Route path="/orders" element={<Orders />} />
 						<Route path="/signin" element={<Navigate to="/" />} />
 						<Route path="/signup" element={<Navigate to="/" />} />
 					</>

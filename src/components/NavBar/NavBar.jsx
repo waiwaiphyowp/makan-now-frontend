@@ -52,7 +52,7 @@ const NavBar = () => {
             </div>
             {/* add to cart */}
             <div>
-            <Link to="/checkout" className="bottom-nav-link">
+            <Link to="/orders" className="bottom-nav-link">
                 Queue No
               </Link>
             </div>
