@@ -45,8 +45,7 @@
 
 /* Button */
 .in-out-input,
-.in-out-button,
-.in-out-cancel-button {
+.in-out-button {
   width: 100%;
   padding: 14px;
   margin: 12px 0;
