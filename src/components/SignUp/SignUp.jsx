@@ -37,13 +37,13 @@ const SignUp = () => {
 	};
 
 	return (
-		<div className="in-out-container">
-			<h2 className="in-out-title">Sign Up</h2>
+		<div className="container">
+			<h2 className="title">Sign Up</h2>
 
-			<form className="in-out-form" onSubmit={handleSubmit}>
+			<form className="container-form" onSubmit={handleSubmit}>
 				<input
 					type="text"
-					className="in-out-input"
+					className="input-form"
 					placeholder="Username"
 					name="username"
 					value={username}
@@ -52,7 +52,7 @@ const SignUp = () => {
 				/>
 				<input
 					type="password"
-					className="in-out-input"
+					className="input-form"
 					placeholder="Password"
 					name="password"
 					value={password}
@@ -61,7 +61,7 @@ const SignUp = () => {
 				/>
 				<input
 					type="password"
-					className="in-out-input"
+					className="input-form"
 					name="passwordConf"
 					placeholder="Confirm Password"
 					value={passwordConf}
@@ -69,22 +69,22 @@ const SignUp = () => {
 					required
 				/>
 
-				<div className="in-out-buttons">
+				<div className="buttons">
 					<button
 						type="submit"
-						className="in-out-button"
+						className="signUp-button"
 						disabled={isFormInvalid()}
 					>
 						Sign Up
 					</button>
-					<button type="button" className="in-out-cancel-button" onClick={() => navigate("/")}>
+					<button type="button" className="cancel-button" onClick={() => navigate("/")}>
 						Cancel
 					</button>
 				</div>
 			</form>
 
-				<p className="in-out-message">{message}</p>
-				<p className="in-out-link">
+			<p className="message">{message}</p>
+			<p className="link">
 					Already have an account? <Link to="/signin">Sign In</Link>
 				</p>
 		</div>

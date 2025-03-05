@@ -1,6 +1,6 @@
 /* Styling for login and logout page  */
 /* Container */
-.in-out-container {
+.container {
   max-width: 450px;
   margin: 60px auto;
   padding: 40px;
@@ -16,8 +16,8 @@
   color: #872341;
 }
 
-/* Title Sign In */
-.in-out-title {
+/* Title Sign In / Sign Up */
+.title {
   color: #ffffff; 
   margin-bottom: 30px;
   font-size: 28px;
@@ -25,7 +25,7 @@
   letter-spacing: 2px;
 }
 
-/* user name and password */
+/* Username and Password Demo */
 .in-out-demo {
   background: #791f3ad5;
   padding: 12px;
@@ -37,16 +37,17 @@
 }
 
 /* Form Styles */
-.in-out-form {
+.container-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* Button */
-.in-out-input,
-.in-out-button,
-.in-out-cancel-button {
+.input-form,
+.signIn-button,
+.signUp-button,
+.cancel-button {
   width: 100%;
   padding: 14px;
   margin: 12px 0;
@@ -57,67 +58,50 @@
   background-color: rgba(121, 31, 58, 0.83);
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
-  /* cursor: pointer; */
 }
 
 /* Submit Button */
-.in-out-button {
+.signIn-button,
+.signUp-button {
   background-color: #DD5353;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
 }
 
-.in-out-button:hover {
+.signIn-button:hover,
+.signUp-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(102, 187, 106, 0.3);
 }
 
 /* Cancel Button */
-.in-out-cancel-button {
+.cancel-button {
   background-color: #872341;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
 }
 
-.in-out-cancel-button:hover {
+.cancel-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(224, 48, 48, 0.3);
 }
 
 /* Link for sign in and sign up */
-.in-out-link {
+.link {
   color: #ffffff;
   margin-top: 20px;
   font-size: 16px;
   font-weight: 500;
 }
 
-.in-out-link a {
+.link a {
   color: #EF9F9F;
   text-decoration: none;
 }
 
-.in-out-link a:hover {
+.link a:hover {
   color: #F47C7C;
   text-decoration: underline;
 }
-
-/* Responsive Design */
-/* @media (max-width: 480px) {
-  .in-out-container {
-    width: 90%;
-    padding: 30px;
-  }
-
-  .in-out-title {
-    font-size: 24px;
-  }
-
-  .in-out-input, 
-  .in-out-button, 
-  .in-out-cancel-button {
-    font-size: 14px;
-  }
-} */

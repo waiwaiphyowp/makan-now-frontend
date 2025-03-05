@@ -30,18 +30,18 @@ const SignIn = () => {
 	};
 
   return (
-    <div className="in-out-container">
-  <h2 className="in-out-title">Sign In</h2>
+    <div className="container">
+  <h2 className="title">Sign In</h2>
 
   <div className="in-out-demo">
     <p><strong>User:</strong> user1</p>
     <p><strong>Password:</strong> 123</p>
   </div>
 
-  <form className="in-out-form" onSubmit={handleSubmit}>
+  <form className="container-form" onSubmit={handleSubmit}>
     <input
       type="text"
-      className="in-out-input"
+      className="input-form"
       placeholder="Username"
       name="username"
       value={username}
@@ -50,14 +50,14 @@ const SignIn = () => {
     />
     <input
       type="password"
-      className="in-out-input"
+      className="input-form"
       placeholder="Password"
       name="password"
       value={password}
       onChange={handleChange}
       required
     />
-    <button type="submit" className="in-out-button">Sign In</button>
+    <button type="submit" className="signIn-button">Sign In</button>
   </form>
 
   <p>{message}</p>
