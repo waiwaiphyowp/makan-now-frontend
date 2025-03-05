@@ -25,10 +25,22 @@ export default function Orders() {
 	}, []);
 
 	return (
-		<div className="order-wrapper">
-			{[...orderList].reverse().map((item) => (
-				<OrderItem key={item._id} orderItem={item} />
-			))}
+		<div>
+			{orderList.length === 0 ? (
+				<div>
+					{" "}
+					<h3>Currently, there are no orders.</h3>
+					<a href="/">
+						<button className="checkout-button">Order Food</button>
+					</a>
+				</div>
+			) : (
+				<div  className="order-wrapper">
+					{[...orderList].reverse().map((item) => (
+						<OrderItem key={item._id} orderItem={item} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 }
