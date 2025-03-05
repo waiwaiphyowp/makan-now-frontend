@@ -22,12 +22,14 @@ export default function MenuItem({ menuItem, addToCart, cart, handleAddQuantity,
 
 	return (
 		<div className="item-card">
-			<div>
+			<div className="item-details">
 				<p className="item-name">
 					<strong>{menuItem.itemName}</strong>
 				</p>
 				<p className="item-description">{menuItem.description}</p>
-				<p className="item-price">$ {menuItem.price}</p>
+				<p className="item-price">
+					<strong>Base Price: $ {menuItem.price}</strong>
+				</p>
 				{isItemInCart ? (
 					<div className="">
 						<div className="quantity">
@@ -45,7 +47,7 @@ export default function MenuItem({ menuItem, addToCart, cart, handleAddQuantity,
 					</div>
 				) : (
 					<button className="item-button" onClick={() => addToCart(menuItem)}>
-						Add to Cart
+						Add to Order
 					</button>
 				)}
 			</div>

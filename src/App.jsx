@@ -72,41 +72,40 @@ const App = () => {
 		<main>
 			{isLoggedIn && <NavBar />}
 			<Routes>
-				{isLoggedIn ? (
-					<>
-						<Route
-							path="/"
-							element={
-								<StoreOne cart={cart} addToCart={handleAddToCart} handleAddQuantity={handleAddQuantity} handleRemoveQuantity={handleRemoveQuantity} />
-							}
-						/>
-						{/* <Route path="/store-one" element={<StoreOne cart={cart} addToCart={handleAddToCart} />} /> */}
-						<Route
-							path="/cart"
-							element={
-								<Cart
-									cart={cart}
-									setCart={setCart}
-									handleRemoveItem={handleRemoveItem}
-									handleAddQuantity={handleAddQuantity}
-									handleRemoveQuantity={handleRemoveQuantity}
-									totalPrice={totalPrice}
-								/>
-							}
-						/>
-						<Route path="/orders" element={<Orders />} />
-						<Route path="/signin" element={<Navigate to="/" />} />
-						<Route path="/signup" element={<Navigate to="/" />} />
-					</>
-				) : (
-					<>
-						<Route path="/signin" element={<SignIn />} />
-						<Route path="/signup" element={<SignUp />} />
-						<Route path="/" element={<SignIn />} />
-					</>
-				)}
+				<Route
+					path="/"
+					element={
+						isLoggedIn ? (
+							<StoreOne cart={cart} addToCart={handleAddToCart} handleAddQuantity={handleAddQuantity} handleRemoveQuantity={handleRemoveQuantity} />
+						) : (
+							<SignIn />
+						)
+					}
+				/>
+				<Route
+					path="/cart"
+					element={
+						isLoggedIn ? (
+							<Cart
+								cart={cart}
+								setCart={setCart}
+								handleRemoveItem={handleRemoveItem}
+								handleAddQuantity={handleAddQuantity}
+								handleRemoveQuantity={handleRemoveQuantity}
+								totalPrice={totalPrice}
+							/>
+						) : (
+							<Navigate to="/" />
+						)
+					}
+				/>
+
+				<Route path="/orders" element={isLoggedIn ? <Orders /> : <Navigate to="/" />} />
+				<Route path="/signin" element={!isLoggedIn ? <SignIn /> : <Navigate to="/" />} />
+				<Route path="/signup" element={!isLoggedIn ? <SignUp /> : <Navigate to="/" />} />
+
 				{/* Catch-all route to redirect to the home page */}
-				<Route path="*" element={<Navigate to="/" />} />
+				<Route path="*" element={!isLoggedIn ? <SignIn /> : <Navigate to="/" />} />
 			</Routes>
 		</main>
 	);
