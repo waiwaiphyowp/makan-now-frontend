@@ -100,8 +100,8 @@ const App = () => {
 					</>
 				) : (
 					<>
-						<Route path="/signin" element={isLoggedIn ? <Navigate to="/" /> : <SignIn />} />
-						<Route path="/signup" element={isLoggedIn ? <Navigate to="/" /> : <SignUp />} />
+						<Route path="/signin" element={<SignIn />} />
+						<Route path="/signup" element={<SignUp />} />
 						<Route path="/" element={<SignIn />} />
 					</>
 				)}
