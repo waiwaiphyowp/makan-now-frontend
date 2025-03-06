@@ -45,7 +45,7 @@ const Cart = ({ cart, setCart, handleRemoveItem, handleAddQuantity, handleRemove
 			) : (
 				
 				<div className="menu-wrapper">
-					<h3>Cart:</h3>
+					<h3>Order Summary</h3>
 					{updatedCart.map((item, index) => (
 						<CartItem
 							key={item._id}
@@ -63,7 +63,7 @@ const Cart = ({ cart, setCart, handleRemoveItem, handleAddQuantity, handleRemove
 
 			{cart.length > 0 ? (
 				<button className="checkout-button" onClick={handleCheckout}>
-					Checkout
+					Place Order
 				</button>
 			) : (
 				<a href="/">
