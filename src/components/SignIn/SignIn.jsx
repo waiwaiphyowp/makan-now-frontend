@@ -24,8 +24,8 @@ const SignIn = () => {
 			const signedInUser = await signIn(formData);
 			setUser(signedInUser);
 			navigate("/store-one"); // Navigate to shop page
-		} catch (err) {
-			setMessage(err.message);
+		} catch (error) {
+			setMessage(error.message);
 		}
 	};
 
