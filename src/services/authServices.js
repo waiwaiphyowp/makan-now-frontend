@@ -1,4 +1,26 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/auth`;
+const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
+  ? `${import.meta.env.VITE_BACK_END_SERVER_URL}/auth`
+  : "http://localhost:5000/auth"; 
+
+const handleResponse = async (res) => {
+  let data;
+  try {
+    data = await res.json(); 
+  } catch (error) {
+    throw new Error(`Invalid response from server. Status: ${res.status}`);
+  }
+
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP error! Status: ${res.status}`);
+  }
+
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+    return JSON.parse(atob(data.token.split(".")[1])).payload; 
+  }
+
+  throw new Error("Invalid response from server");
+};
 
 const signUp = async (formData) => {
 	try {
@@ -8,16 +30,7 @@ const signUp = async (formData) => {
 			body: JSON.stringify(formData),
 		});
 
-		const data = await res.json();
-		if (data.error) {
-			throw new Error(data.error);
-		}
-
-		if (data.token) {
-			localStorage.setItem("token", data.token);
-			return JSON.parse(atob(data.token.split(".")[1])).payload;
-		}
-		throw new Error("Invalid response from server");
+    return await handleResponse(res);
 	} catch (error) {
 		console.log(error);
 		throw new Error(error);
@@ -32,18 +45,7 @@ const signIn = async (formData) => {
 			body: JSON.stringify(formData),
 		});
 
-		const data = await res.json();
-
-		if (data.err) {
-			throw new Error(data.err);
-		}
-
-		if (data.token) {
-			localStorage.setItem("token", data.token);
-			return JSON.parse(atob(data.token.split(".")[1])).payload;
-		}
-
-		throw new Error("Invalid response from server");
+    return await handleResponse(res);
 	} catch (error) {
 		console.log(error);
 		throw new Error(error);
