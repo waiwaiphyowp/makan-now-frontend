@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import StoreOne from "./components/StallList/StoreOne/StoreOne";
@@ -7,6 +7,7 @@ import Orders from "./components/Orders/Orders";
 import { UserContext } from "../src/contexts/userContext";
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
+import Shops from "./components/Shops/Shop"; // Import Shops component
 import "../src/App.css";
 
 const App = () => {
@@ -76,10 +77,29 @@ const App = () => {
 					path="/"
 					element={
 						isLoggedIn ? (
-							<StoreOne cart={cart} addToCart={handleAddToCart} handleAddQuantity={handleAddQuantity} handleRemoveQuantity={handleRemoveQuantity} />
-						) : (
+              <Navigate to="/shops" />
+            ) : (
 							<SignIn />
 						)
+					}
+				/>
+        <Route
+          path="/shops"
+          element={isLoggedIn ? <Shops /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/storeone"
+          element={
+            isLoggedIn ? (
+              <StoreOne
+                cart={cart}
+                addToCart={handleAddToCart}
+                handleAddQuantity={handleAddQuantity}
+                handleRemoveQuantity={handleRemoveQuantity}
+              />
+            ) : (
+              <Navigate to="/" />
+            )
 					}
 				/>
 				<Route
