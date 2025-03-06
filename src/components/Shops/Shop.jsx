@@ -7,7 +7,12 @@ const Shops = () => {
 		<div className="store-wrapper">
 
         <Link to="/storeone">Satay King Store</Link> 
-        <Link to="">Chicken Queen Store</Link>
+        <Link to="" 
+        style={{ backgroundColor: 'gray', pointerEvents: 'none' }}
+      >Coming Soon... </Link>
+      <Link to="" 
+        style={{ backgroundColor: 'gray', pointerEvents: 'none' }}
+      >Coming Soon...</Link>
       </div>	
 
 	);
