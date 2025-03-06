@@ -28,8 +28,8 @@ const SignUp = () => {
 			setUser(newUser); // user == {username, _id}
 			navigate("/store-one"); // Navigate to shop page
 			console.log(newUser);
-		} catch (err) {
-			setMessage(err.message);
+		} catch (error) {
+			setMessage(error.message);
 		}
 	};
 
