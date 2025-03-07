@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+//import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import StoreOne from "./components/StallList/StoreOne/StoreOne";
@@ -73,33 +74,16 @@ const App = () => {
 		<main>
 			{isLoggedIn && <NavBar />}
 			<Routes>
+				<Route path="/" element={isLoggedIn ? <Navigate to="/shops" /> : <SignIn />} />
+				<Route path="/shops" element={isLoggedIn ? <Shops /> : <Navigate to="/" />} />
 				<Route
-					path="/"
+					path="/storeone"
 					element={
 						isLoggedIn ? (
-              <Navigate to="/shops" />
-            ) : (
-							<SignIn />
+							<StoreOne cart={cart} addToCart={handleAddToCart} handleAddQuantity={handleAddQuantity} handleRemoveQuantity={handleRemoveQuantity} />
+						) : (
+							<Navigate to="/" />
 						)
-					}
-				/>
-        <Route
-          path="/shops"
-          element={isLoggedIn ? <Shops /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/storeone"
-          element={
-            isLoggedIn ? (
-              <StoreOne
-                cart={cart}
-                addToCart={handleAddToCart}
-                handleAddQuantity={handleAddQuantity}
-                handleRemoveQuantity={handleRemoveQuantity}
-              />
-            ) : (
-              <Navigate to="/" />
-            )
 					}
 				/>
 				<Route
