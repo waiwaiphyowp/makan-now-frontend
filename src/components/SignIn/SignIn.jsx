@@ -53,7 +53,7 @@ const SignIn = () => {
 				</button>
 			</form>
 
-			<p>{message}</p>
+			<p className="err-message">{message}</p>
 
 			<p className="in-out-link">
 				Don't have an account? <a href="/signup">Sign Up</a>

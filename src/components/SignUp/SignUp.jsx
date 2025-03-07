@@ -95,7 +95,7 @@ const SignUp = () => {
 				</div>
 			</form>
 
-			<p className="in-out-message">{message}</p>
+			<p className="err-message">{message}</p>
 			<p className="in-out-link">
 				Already have an account? <Link to="/signin">Sign In</Link>
 			</p>
