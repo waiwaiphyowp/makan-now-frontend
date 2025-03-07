@@ -3,7 +3,7 @@
 .in-out-container {
   max-width: 450px;
   margin: 60px auto;
-  padding: 40px;
+  padding: 45px;
   background-color: #872341;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -14,6 +14,19 @@
 
 .title-logo {
   color: #872341;
+}
+
+.mankan-logo {
+  padding-top: 20px;
+  width: 180px;
+}
+
+.signIn-css{
+  padding-top: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
 /* Title Sign In */

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../services/authServices";
 import { UserContext } from "../../contexts/userContext";
+import logo from "../../assets/photo/logo.png"
 import "./SignUp.css"
 
 const SignUp = () => {
@@ -39,7 +40,8 @@ const SignUp = () => {
 
 	return (
 		<div className="in-out-container">
-			<h2 className="in-out-title">Sign Up</h2>
+			<img src={logo} alt="MakanNow Logo" className="mankan-logo" />
+			<h2 style={{color: "white"}}>Sign Up</h2>
 
 			<form className="in-out-form" onSubmit={handleSubmit}>
 				<input

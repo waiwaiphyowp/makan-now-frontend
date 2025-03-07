@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { signIn } from "../../services/authServices";
 import { UserContext } from "../../contexts/userContext";
+import logo from "../../assets/photo/logo.png"
 
 const SignIn = () => {
 	const navigate = useNavigate();
@@ -31,12 +32,15 @@ const SignIn = () => {
 
   return (
     <div className="in-out-container">
-  <h2 className="in-out-title">Sign In</h2>
+      <p style={{color: "white", fontSize: "30px", fontWeight: "bold"}}>Skip the Q</p>
+			<span style={{color: "white"}}>with mobile Order.</span>
+	    <img src={logo} alt="MakanNow Logo" className="mankan-logo" />
+      <p className="signIn-css">Sign In</p>
 
-  <div className="in-out-demo">
+  {/* <div className="in-out-demo">
     <p><strong>User:</strong> user1</p>
     <p><strong>Password:</strong> 123</p>
-  </div>
+  </div> */}
 
   <form className="in-out-form" onSubmit={handleSubmit}>
     <input

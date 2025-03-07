@@ -4,6 +4,7 @@ import { UserContext } from "../../contexts/userContext";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faCartShopping, faUser, faShop } from '@fortawesome/free-solid-svg-icons';
+import logo from "../../assets/photo/nav-logo.png"
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -25,8 +26,9 @@ const NavBar = () => {
         {user ? (
           <ul className="top-nav-list">
             <li className="top-nav-item">
+              <img src={logo} alt="MakanNow Logo" className="nav-logo" />
               <FontAwesomeIcon icon={faUser} className="top-nav-icon" />
-              <span>Welcome, {user.username}</span>
+                <span className="top-nav-icon">Welcome, {user.username}</span>
             </li>
             {/* The new link */}
             {/* sign out icon */}
