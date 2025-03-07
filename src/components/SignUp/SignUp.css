@@ -18,6 +18,11 @@ font-weight: bold;
   box-shadow: 0 8px 20px rgba(102, 187, 106, 0.3);
 }
 
+.signup-button:disabled{
+  background-color: #dd53537c;
+  color: #ffffff75;
+}
+
 .signup-button {
   background-color: #DD5353;
 }

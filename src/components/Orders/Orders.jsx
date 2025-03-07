@@ -25,7 +25,7 @@ export default function Orders() {
 	}, []);
 
 	return (
-		<div>
+		<div className="page-wrapper">
 			{orderList.length === 0 ? (
 				<div>
 					{" "}

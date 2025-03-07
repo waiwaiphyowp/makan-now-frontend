@@ -2,8 +2,8 @@
 /* Container */
 .in-out-container {
   max-width: 450px;
-  margin: 60px auto;
-  padding: 45px;
+  margin: 0px 20px;
+  padding: 45px 20px;
   background-color: #872341;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -62,7 +62,7 @@
   width: 100%;
   padding: 14px;
   margin: 12px 0;
-  border-radius: 25px;
+  border-radius: 16px;
   font-size: 18px;
   box-sizing: border-box;
   border: 1px solid #ffffff;
@@ -71,6 +71,19 @@
   font-family: 'Poppins', sans-serif;
   /* cursor: pointer; */
 }
+
+.in-out-input::placeholder{
+  color: #ffffff90;
+}
+
+.in-out-input:focus-visible{
+  outline: 2px solid #F47C7C;
+}
+
+.in-out-message{
+  color: #ffffff90;
+}
+
 
 /* Submit Button */
 .in-out-button {
@@ -101,7 +114,7 @@
 /* Link for sign in and sign up */
 .in-out-link {
   color: #ffffff;
-  margin-top: 20px;
+  margin-top: 80px;
   font-size: 16px;
   font-weight: 500;
 }
@@ -109,6 +122,7 @@
 .in-out-link a {
   color: #EF9F9F;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .in-out-link a:hover {
