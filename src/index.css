@@ -17,6 +17,9 @@ main {
 	max-width: 390px;
 	width: 100%;
 	margin: 0 auto;
+	background: white;
+	min-height: 100vh;
+	padding-top: 100px;
 }
 
 body {
