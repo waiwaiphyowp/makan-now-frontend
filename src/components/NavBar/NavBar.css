@@ -23,9 +23,16 @@
 	font-weight: bold;
 }
 
+/* welcome css */
 .top-nav-icon {
 	margin-right: 5px;
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: 50%; /* Adjust up or down */
 }
+
+
 /* 
 .top-nav-welcome {
   font-weight: bold;
@@ -43,7 +50,20 @@
 
 .top-nav-sign-out-icon {
 	font-size: 20px;
+  margin-top: 10px; /* move the icon down */
 }
+
+
+.nav-logo {
+	width: 35px;
+	padding-right: 10px;
+}
+
+.user-display {
+  padding-bottom: 10px;
+	display: inline;
+}
+
 
 /* Bottom Navbar */
 .bottom-nav {
