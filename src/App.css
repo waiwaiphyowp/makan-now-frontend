@@ -130,6 +130,10 @@
   text-decoration: underline;
 }
 
+.err-message {
+  color: #ffffff;
+}
+
 /* Responsive Design */
 /* @media (max-width: 480px) {
   .in-out-container {
